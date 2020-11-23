@@ -7,48 +7,6 @@ Important:
 
 This dataset includes geocoded crime incidents from 1 Jan 2007 to 31 March 2013 that were returned by SANDAG for Public Records request 12-075. 
 
-The extracts from the dataset include both CSV files, for use in spreadsheet applications, and ESRI shapefiles, for use in GIS applications. Both files are partitioned by year and include the following fields. Shapefiles also include point geometries for each incident. 
-
-Many of the columns use [Clarinova Place Codes](https://sandiegodata.atlassian.net/wiki/display/SDD/Clarinova+Place+Codes) (CPC) to identify places, such as neighborhoods, council districts and communities. 
-
-  * date: ISO date, in YY-MM-DD format
-  * year: Four digit year. 
-  * month: Month number extracted from the date
-  * day: Day number, starting from Jan 1, 2000
-  * week: ISO week of the year
-  * dow: Day of week, as a number. 0 is Sunday
-  * time: Time, in H:MM:SS format
-  * hour: Hour number, extracted from the time
-  * is_night: 1 if time is between dusk and dawn, rounded to nearest hour. All comparisons are performed against the dusk and dawn times for the 15th of the month. 
-  * type: Crime category, provided by SANDAG *This is the short crime type*
-  * address: Block address, street and city name
-  * segment_id: segment identifier from SANGID road network data. 
-  * city: CPC code for the city. 
-  * nbrhood: CPC code for the neighborhood. San Diego only. 
-  * community: CPC code for the community planning area. San Diego only.
-  * comm\_pop: Population of the community area, from the 2010 Census 
-  * council: CPC code for the city council district. San Diego only. 
-  * council\_pop: Population of the council area, from the 2010 Census
-  * place: Census place code, for future use. 
-  * asr_zone_: Assessor's zone code for nearest parcel. 
-  * lampdist: Distance to nearest streetlamp in centimeters
-  * state: State. Always "CA"
-  * lat: Latitude, provided by the geocoder.
-  * lon: Longitude, provided by the geocoder.
-  * desc: Long description of incident. 
-
-
-City, District and Community Codes
-===================================
-
-Four of the fields use custom codes to identify geographic regions: 
-
-  * neighborhood/nbrhood
-  * community
-  * council
-  * city
-
-These fields use [Clarinova Place Codes](https://sandiegodata.atlassian.net/wiki/display/SDD/Clarinova+Place+Codes), 6 character codes that are designed to be memorable and unambiguous. See the [place codes Google spreadsheet](https://docs.google.com/a/clarinova.com/spreadsheet/ccc?key=0AhnSJoCKXnSUdE1SMXVDYzBGYjVXX3kwUkRBUi1NaHc#gid=0) for a list all of the codes. 
 
 Asr\_zone Codes
 ===============

@@ -3,36 +3,66 @@ Title,San Diego Region Crime Incidents 2007 - 2013
 Description,"Processed crime incidents for San Diego county, 2007-2013. Of our crime"
 Description,"datasets, this one is most useful for analysis."
 Identifier,14b71c08-7cac-47b5-a01b-f349b8e84b5d
-Name,sandag.gov-crime-2007e2013-1.1.1
+Name,sandag.gov-crime-2007e2013-2.1.1
 Dataset,crime
 Origin,sandag.gov
 Time,2007e2013
 Space,
 Grain,
 Variant,
-Version,1.1.1
-Version.Major,1
+Version,2.1.1
+Version.Major,2
 Version.Minor,1
 Version.Patch,1
 Created,2019-05-15T20:16:07
-Modified,2020-11-22T05:59:45
-,
+Modified,2020-11-23T04:44:34
+Giturl,https://github.com/metatab-packages/sandag.gov-crime-2007e2013.git
 
 Section,Contacts,Email,Organization,Url
 Wrangler,Eric Busboom,eric@sandiegodata.org,San Diego Regional Data Library,http://sandiegodata.org
 
 Section,Documentation,Title,Description,
-,,,,
 Documentation,file:README.md,README,,
 
+
+
 Section,References,Name,Description,
-Reference,https://s3.amazonaws.com/s3.sandiegodata.org/repo/clarinova.com/crime-incidents-casnd-7ba4-r3/incidents-shapefiles.zip,incidents-shapefiles.zip,"Shape files of incident points in shapefile format, broken up by year. Each file includes attributes for time, date, type, description and address of the incidents.",
-Datafile,https://s3.amazonaws.com/s3.sandiegodata.org/repo/clarinova.com/crime-incidents-casnd-7ba4-r3/incidents-community-sf.zip,incidents-community-sf.zip,"Shape files of incident points in San Diego, broken out by community. The files are named with the CPC code for the community. See the (CPC Code spreadsheet)[https://docs.google.com/a/clarinova.com/spreadsheet/ccc?key=0AhnSJoCKXnSUdE1SMXVDYzBGYjVXX3kwUkRBUi1NaHc] for full community names.",
+Reference,     file:data/incidents-2007.csv.zip#&encoding=ascii,crime-2007
+Reference,     file:data/incidents-2012.csv.zip#&encoding=ascii,crime-2012
+Reference,     file:data/incidents-2013.csv.zip#&encoding=ascii,crime-2013
+Reference,     file:data/incidents-2011.csv.zip#&encoding=ascii,crime-2011
+Reference,     file:data/incidents-2008.csv.zip#&encoding=ascii,crime-2008
+Reference,     file:data/incidents-2009.csv.zip#&encoding=ascii,crime-2009
+Reference,     file:data/incidents-2010.csv.zip#&encoding=ascii,crime-2010
+,,
+Section,Resources,Encoding,Description,HeaderLines,StartLine,Name
+Datafile,notebooks/Process.ipynb#incidents,,"San Diego county crime incidents, 2007 to 2013",,,incidents
 
-Section,Resources,Name,Description,
-Datafile,https://s3.amazonaws.com/s3.sandiegodata.org/repo/clarinova.com/crime-incidents-casnd-7ba4-r3/incidents-100k.csv,incidents-100k.csv,"A random selection of 100,000 incidents for San Diego city, for demonstrations or use with tools that only accept a small number of records. The time order is  random, so any subset is also evenly sampled.",
-Datafile,https://s3.amazonaws.com/s3.sandiegodata.org/repo/clarinova.com/crime-incidents-casnd-7ba4-r3/incidents-5y.csv,incidents-5y.csv,"All of the incidents, about 750K records, for years 2008, 2009, 2010, 2011 and 2012. This set has less than 1M records so it can be loaded into Tableau.",
-Datafile,https://s3.amazonaws.com/s3.sandiegodata.org/repo/clarinova.com/crime-incidents-casnd-7ba4-r3/incidents-csv.zip,incidents-csv.zip,Incident points in CSV format.,
-,,,,
-
-Section,Schema,DataType,AltName,Description
+Section,Schema,DataType,Description,,
+Table,incidents,,,,
+Table.Column,date,date,"ISO date, in YY-MM-DD format",,
+Table.Column,year,integer,Four digit year.,,
+Table.Column,month,integer,Month number extracted from the date,,
+Table.Column,day,integer,"Day number, starting from Jan 1, 2000",,
+Table.Column,week,integer,ISO week of the year,,
+Table.Column,dow,integer,"Day of week, as a number. 0 is Sunday",,
+Table.Column,time,date,"Time, in H:MM:SS format",,
+Table.Column,hour,integer,"Hour number, extracted from the time",,
+Table.Column,is_night,integer,"1 if time is between dusk and dawn, rounded to nearest hour. All comparisons are performed against the dusk and dawn times for the 15th of the month.",,
+Table.Column,category,string,"Crime category, provided by SANDAG *This is the short crime type*",,
+Table.Column,address,string,"Block address, street and city name",,
+Table.Column,city,string,City name,,
+Table.Column,segment_id,integer,segment identifier from SANGID road network data.,,
+Table.Column,nbrhood,string,Neighborhood name,,
+Table.Column,community,string,Community Name,,
+Table.Column,comm_pop,integer,"Population of the community area, from the 2010 Census",,
+Table.Column,council,string,San Diego City council,,
+Table.Column,council_pop,integer,Population of San Diego city council,,
+Table.Column,asr_zone,integer,Assessor's zone code for nearest parcel.,,
+Table.Column,lampdist,integer,Distance to nearest streetlamp in centimeters,,
+Table.Column,lat,number,"Latitude, provided by the geocoder.",,
+Table.Column,lon,number,"Longitude, provided by the geocoder.",,
+Table.Column,desc,string,Long description of incident.,,
+Table.Column,gctype,string,,,
+Table.Column,gcquality,integer,,,
+Table.Column,geometry,string,,,
