@@ -3,50 +3,48 @@ Title,San Diego Region Crime Incidents 2007 - 2013
 Description,"Processed crime incidents for San Diego county, 2007-2013. Of our crime"
 Description,"datasets, this one is most useful for analysis."
 Identifier,14b71c08-7cac-47b5-a01b-f349b8e84b5d
-Name,sandag.gov-crime-2007e2013-2.1.1
+Name,sandag.gov-crime-2007e2013-2.1.2
 Dataset,crime
 Origin,sandag.gov
 Time,2007e2013
 Space,
 Grain,
 Variant,
-Version,2.1.1
+Version,2.1.2
 Version.Major,2
 Version.Minor,1
-Version.Patch,1
+Version.Patch,2
 Created,2019-05-15T20:16:07
-Modified,2020-11-23T04:44:34
+Modified,2020-11-24T04:16:45
 Giturl,https://github.com/metatab-packages/sandag.gov-crime-2007e2013.git
-
+""
 Section,Contacts,Email,Organization,Url
 Wrangler,Eric Busboom,eric@sandiegodata.org,San Diego Regional Data Library,http://sandiegodata.org
-
+""
 Section,Documentation,Title,Description,
 Documentation,file:README.md,README,,
-
-
-
+""
 Section,References,Name,Description,
-Reference,     file:data/incidents-2007.csv.zip#&encoding=ascii,crime-2007
-Reference,     file:data/incidents-2012.csv.zip#&encoding=ascii,crime-2012
-Reference,     file:data/incidents-2013.csv.zip#&encoding=ascii,crime-2013
-Reference,     file:data/incidents-2011.csv.zip#&encoding=ascii,crime-2011
-Reference,     file:data/incidents-2008.csv.zip#&encoding=ascii,crime-2008
-Reference,     file:data/incidents-2009.csv.zip#&encoding=ascii,crime-2009
-Reference,     file:data/incidents-2010.csv.zip#&encoding=ascii,crime-2010
-,,
+Reference,file:data/incidents-2007.csv.zip#&encoding=ascii,crime-2007,,
+Reference,file:data/incidents-2012.csv.zip#&encoding=ascii,crime-2012,,
+Reference,file:data/incidents-2013.csv.zip#&encoding=ascii,crime-2013,,
+Reference,file:data/incidents-2011.csv.zip#&encoding=ascii,crime-2011,,
+Reference,file:data/incidents-2008.csv.zip#&encoding=ascii,crime-2008,,
+Reference,file:data/incidents-2009.csv.zip#&encoding=ascii,crime-2009,,
+Reference,file:data/incidents-2010.csv.zip#&encoding=ascii,crime-2010,,
+""
 Section,Resources,Encoding,Description,HeaderLines,StartLine,Name
 Datafile,notebooks/Process.ipynb#incidents,,"San Diego county crime incidents, 2007 to 2013",,,incidents
-
+""
 Section,Schema,DataType,Description,,
 Table,incidents,,,,
-Table.Column,date,date,"ISO date, in YY-MM-DD format",,
+Table.Column,datetime,datetime,date and time in ISO format,,
 Table.Column,year,integer,Four digit year.,,
 Table.Column,month,integer,Month number extracted from the date,,
 Table.Column,day,integer,"Day number, starting from Jan 1, 2000",,
 Table.Column,week,integer,ISO week of the year,,
 Table.Column,dow,integer,"Day of week, as a number. 0 is Sunday",,
-Table.Column,time,date,"Time, in H:MM:SS format",,
+Table.Column,time,datetime,"Time, in H:MM:SS format",,
 Table.Column,hour,integer,"Hour number, extracted from the time",,
 Table.Column,is_night,integer,"1 if time is between dusk and dawn, rounded to nearest hour. All comparisons are performed against the dusk and dawn times for the 15th of the month.",,
 Table.Column,category,string,"Crime category, provided by SANDAG *This is the short crime type*",,
